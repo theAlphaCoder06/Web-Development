@@ -1,0 +1,33 @@
+/**************TAG SELECTOR**********/
+h1{
+    color: red;
+}
+img{
+    background-color: orangered;
+}
+
+/***********CLASS SELECTOR***********/
+.bacon{
+    background-color: orange;
+}
+.broccolli{
+    background-color: red;
+}
+.circular{
+    border-radius: 10%;
+}
+
+/*********ID SELECTOR**************/
+#heading{
+    color: blue;
+}
+/*
+#big{     //can not have more than one id
+    color: blue;
+}
+
+*/
+/*
+ID selector override tag selector.
+we can not override the ID name, but we can override class.
+*/

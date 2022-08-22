@@ -1,0 +1,140 @@
+body{
+    margin:0;
+    color:#40540e;
+    text-align: center;  /* This only works for inline and block elements to centre align the elements*/
+    font-family: 'Merriweather',serif;
+}
+a{
+    color: #11999E;
+    text-decoration-line: none;
+    font-family: 'Montserrat', sans-serif;
+    margin: 10px 20px;
+}
+a:hover{
+    color: #eaf6f6;
+}
+.profile{
+    padding-bottom: 30px;
+}
+p{
+    line-height: 2;
+}
+
+hr{
+    border-style: dotted none none none;
+    width: 5%;
+    color: black;
+    border-width: 5px;
+}
+
+h1{
+    margin: 50px auto 0 auto;
+/*  font-size: 90px;    But it is not dynamic if the user selects very large font size in chrome setting it won't change but the others will. However, zooming does not rely on em percentage or px*/
+    font-size: 5.625rem;
+    font-family: 'Sacramento',cursive;
+    color: #66BFBF;
+}
+h2{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    color: #66BFBF;
+    font-weight: normal;
+    padding-bottom: 10px;
+}
+h3{
+    font-family: 'Montserrat', sans-serif;
+    color: #11999E;
+    width: 50%;
+    margin: auto;
+}
+.skills{
+    padding-top: 30px;
+}
+.skill-row{
+    width: 50%;
+    margin: 100px auto;
+    text-align: left;
+}
+.code-image{
+    width: 25%;
+    float: left;
+    margin: 0 30px 0 0;
+}
+.chilli-image{
+    width: 25%;
+    float: right;
+    margin-left: 30px;
+}
+
+.pro{
+    text-decoration: underline;
+}
+.intro{
+    width: 30%;
+    margin: 0 auto;
+}
+.top-Container{
+    background-color: #E4F9F5;
+    position: relative;
+    padding-top:100px;
+    margin: 0 0 50px 0;
+}
+.top-cloud{
+    position:absolute;
+    right: 300px;
+    top: 30px;
+}
+.bottom-cloud{
+    position: absolute;
+    left: 250px;
+    bottom: 300px;
+}
+.width-hot{
+    margin-right: 400px;
+}
+.contact-me{
+    margin: 100px 0;
+}
+.btn{
+    background: #11cdd4;
+    background-image: -webkit-linear-gradient(top, #11cdd4, #11999e);
+    background-image: -moz-linear-gradient(top, #11cdd4, #11999e);
+    background-image: -ms-linear-gradient(top, #11cdd4, #11999e);
+    background-image: -o-linear-gradient(top, #11cdd4, #11999e);
+    background-image: linear-gradient(to bottom, #11cdd4, #11999e);
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    font-size: 21px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+.btn:hover {
+    background: #30e3cb;
+    background-image: -webkit-linear-gradient(top, #30e3cb, #2bc4ad);
+    background-image: -moz-linear-gradient(top, #30e3cb, #2bc4ad);
+    background-image: -ms-linear-gradient(top, #30e3cb, #2bc4ad);
+    background-image: -o-linear-gradient(top, #30e3cb, #2bc4ad);
+    background-image: linear-gradient(to bottom, #30e3cb, #2bc4ad);
+    text-decoration: none;
+  }
+  .contact-description{
+    margin-bottom: 20px;
+  }
+.bottom-container{
+    background-color: #66BFBF;
+    padding: 50px 0 20px;
+}
+.footer-link{
+    color: #11999e;
+}
+.copyright-text{
+    color: #eaf6f6;
+    font-size: 0.75rem;
+}
+.copyright-text{
+    margin-top: 30px;
+    margin-bottom: 0;
+}
