@@ -4,12 +4,15 @@
     font-size: 9vh;
     text-shadow: 5px 5px 10px #000;
 }
-    
+
+h1{
+  font-family: 'Ubuntu', sans-serif;
+}
 
 /* ! Nav Bar Section */
 
 a{
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 li a{
