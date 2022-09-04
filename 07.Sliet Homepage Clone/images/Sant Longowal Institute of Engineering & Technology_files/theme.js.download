@@ -1,0 +1,65 @@
+jQuery(document).ready(function ($) {
+
+	// top slider.
+	$('#unoslider').unoslider({
+	   width: '100%', /*780*/
+		//width: 1170,
+		height: 360, /*450*/
+		indicator:{ autohide:true}
+	});
+	// top ticker.
+	$('#js-news').ticker({
+		controls: true,        // Whether or not to show the jQuery News Ticker controls
+		titleText: ''
+	});
+
+	// second Ticker: Latest News.
+	var $latestUpdates = $('#latest-updates-ticker');
+	if ($latestUpdates.length) {
+		$latestUpdates.ticker({
+			controls: false,        // Whether or not to show the jQuery News Ticker controls.
+			titleText: 'Latest News'
+		});
+	}
+
+	// Sidebar.
+	$("#sidebar  ul li:odd").addClass('odd');
+	$("#sidebar  ul li:even").addClass('even');
+
+	//for home page columns inside main content
+	$('.widget_bpmag_recent_news_widget').each( function () {
+		equalizeHeights($(this).find('.fieldset'));
+	});
+
+	/**
+	 * Make heights same.
+	 *
+	 * @param elements
+	 */
+	function equalizeHeights(elements) {
+		if (!elements || !elements.length) {
+			return;
+		}
+		var max = 0;
+		for (var i = 0; i < elements.length; i++) {
+			var curHeight = $(elements[i]).outerHeight(true);
+			if (max < curHeight) {
+				max = curHeight;
+			}
+		}
+		elements.outerHeight(max);
+	}
+
+
+	//makeColumnsEqualHeight($("#sidebar"), $("#content"));
+
+	function makeColumnsEqualHeight(col1, col2) {
+
+		if (!$(col1).get(0)) {
+			return;
+		}
+
+		col1.height() > col2.height() ? col2.height(col1.height()) : col1.height(col2.height());
+	}
+
+});

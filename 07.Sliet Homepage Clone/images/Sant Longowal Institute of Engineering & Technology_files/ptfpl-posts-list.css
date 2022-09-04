@@ -1,0 +1,81 @@
+.ptfpl-clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.ptfpl-posts-list-wrapper {
+    position: relative;
+}
+.ptfpl-list-item {
+    position: relative;
+   margin-bottom: 20px; 
+   
+}
+.ptfpl-post-thumbnail {
+    width: 100px;
+    height: 80px;
+    margin-right: 10px;
+    float: left;
+}
+.ptfpl-post-thumbnail img{
+    max-width: 100%;
+    border: 1px solid #eee;
+    padding: 2px;
+}
+img.size-ptfpl-thumb-featured {
+    /*height: 190px;*/
+    height: 150px;
+}
+
+.ptfpl-post-entry {
+    float:left;
+    width: 180px;
+}
+.pt-flexible-posts-no-thumbnail .ptfpl-post-thumbnail {
+    display:none;
+}
+.pt-flexible-posts-no-thumbnail .ptfpl-post-entry{
+    width: 100%;
+    float:none;
+    clear:left;
+}
+.ptfpl-row-featured-single-col {
+   margin-bottom: 30px; 
+   
+}
+.ptfpl-row-single-col .ptfpl-post-thumbnail,
+.ptfpl-row-single-col .ptfpl-post-entry{
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.ptfpl-row-single-col .ptfpl-post-thumbnail {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+.ptfpl-row-single-col .ptfpl-post-entry {
+    width: 100%;
+}
+/*sliet home*/
+.pt-flexible-posts-list h3.widgettitle{
+    margin-bottom: 15px;
+}
+
+/*text align*/
+.pt-text-align-left .ptfpl-post-entry{
+    text-align: left;
+}
+
+.pt-text-align-center .ptfpl-post-entry{
+    text-align: center;
+}
+
+.pt-text-align-right .ptfpl-post-entry{
+    text-align: right;
+}
+
+.pt-text-align-justify .ptfpl-post-entry{
+    text-align: justify;
+}
