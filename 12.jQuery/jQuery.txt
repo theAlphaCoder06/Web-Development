@@ -1,0 +1,66 @@
+/***************** What is jQuery? *****************/
+
+jQuery is the most popular javascript library.
+    Why is it used?
+        Normal JavaScript code:(Drum kit project)
+            for(i = 0; i<document.querySelector("button").length; i++){
+                document.querySelectorAll("button")[i].addEventListener("click", function() {
+                    document.querySelector("h1").style.color = "red";
+                });
+            }
+        jQuery code:
+            $("button").click(function(){
+                $("h1").css("color", "red");
+            })
+
+        document.querySelector("h1") --> jQuery --> jQuery("h1") --> $("h1")
+
+/***************** How to incorporate jQuery in websites? *****************/
+    Head over to jQuery.com
+    You can download the code same as bootstrap
+    or you can use CDN 
+    however the most popular way is to use google CDN due to cache memory stored in their system browser
+
+If we place jQuery below our JS script tag, it will not work any longer.
+    The reason is the browser will read the html from top to bottom
+If we place both our JS and jQuery tag in head section it will not even give error since the jQuery is not ready for this you can do
+  $(document).ready(function(){
+    $("h1").css("color", "red");
+  });
+
+How minification works to reduce the file size?
+
+    All the spaces, comments, new lines etcetra has been removed to reduce the files size.
+    If you go to minifiy.org which is a way to minify your js or css code.
+    This reason for minification is to reduce the time to to load the files.
+
+Selecting elements with jQuery
+
+    document.querySelector("h1") --> jQuery --> jQuery("h1") --> $("h1")
+    document.querySelector("h1");
+    jQuery("h1");
+    $("h1");
+
+    document.querySelectorAll("button");
+    $("button");
+    There is no difference between selecting one and selecting many.
+
+Manipulating Styles with jQuery
+
+    Getting the value:
+        $("h1").css("color");   What is the color of h1 tag
+    Setting the value:
+        $("h1").css("color", "red");    Set the color of h1 to red
+
+    Query if an HTML element has been applied a class or not
+        $("h1").hasClass("margin-50");
+        Output:true
+
+Manipulating text using jQuery
+    $("h1").text("bye");
+
+Manipulating attributes with jQuery
+    Get the value of attribute
+        $("h1").attr("href");    //get the source printed
+    Set the value of attribute
+        $("h1").attr("href","https://www.google.com");
