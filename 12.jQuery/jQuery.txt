@@ -3,7 +3,7 @@
 jQuery is the most popular javascript library.
     Why is it used?
         Normal JavaScript code:(Drum kit project)
-            for(i = 0; i<document.querySelector("button").length; i++){
+            for(i = 0; i<document.querySelectorAll("button").length; i++){
                 document.querySelectorAll("button")[i].addEventListener("click", function() {
                     document.querySelector("h1").style.color = "red";
                 });
@@ -64,3 +64,72 @@ Manipulating attributes with jQuery
         $("h1").attr("href");    //get the source printed
     Set the value of attribute
         $("h1").attr("href","https://www.google.com");
+
+Adding EventListener using jQuery   
+    
+     Event Listener using javascript
+
+        for(let i = 0; i<document.querySelectorAll("button").length;i++){
+            document.querySelectorAll("button")[i].addEventListener("click",function(){
+                document.querySelector("h1").style.color = "red";
+            });
+        }
+
+    Event listener using jQuery
+
+        $("button").click(function(){
+            $("h1").css("color", "purple");
+        });
+
+    Keypress
+         $("body").keypress(function(event){
+            console.log(event.key);
+        });
+Now instead of adding .click or .keypress we can use on() which takes two parameters first is the action and the second is response.
+
+    $("h1").on("mouseover", function(){
+        $("h1").css("color", "purple");
+    });
+
+Adding and Removing elements with jQuery
+
+    Adding:
+        If I need to create a button before h1 tag then
+            $("h1").before("<button>New</button>"); --> Adds the element before the h1 tag
+            $("h1").after("<button>New</button>"); --> Adds the element after the h1 tag
+            $("h1").prepend("<button>New</button>"); --> Adds the element inside the h1 tag but before the world hello
+            $("h1").append("<button>New</button>"); --> Adds the element inside the h1 tag but after the word hello
+    Removing:
+        $("button").remove(); --> This removes all the buttons on the web page
+
+Website Animation with jQuery
+
+    If we need to toggle between hide and unhide
+        $("button").on("click", function(){
+            $("h1").toggle();
+        });
+        $("button").on("click", function(){
+            $("h1").fadeOut();
+        });
+        $("button").on("click", function(){
+            $("h1").fadeIn();
+        });
+        $("button").on("click", function(){
+            $("h1").fadeToggle();
+        });
+        $("button").on("click", function(){
+            $("h1").slideUp();
+        });
+        $("button").on("click", function(){
+            $("h1").slideToggle();
+        });
+        $("body").on("keypress", function(){
+            $("h1").animate({opacity:0.5});
+        });
+    Note: In between animate we can only change such property which has a numeric values, so font-family etc can't be changed.
+    Chaining:
+            $("body").on("keypress", function(){
+                $("h1").slideUp().slideDown().animate({opacity:0.5});
+            });
+
+            
