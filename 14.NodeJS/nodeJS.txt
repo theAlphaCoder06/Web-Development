@@ -1,0 +1,1 @@
+Node JS works on event driven architechture.
