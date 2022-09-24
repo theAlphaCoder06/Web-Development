@@ -60,7 +60,7 @@ app.post("/failure", (req, res)=>{
     res.redirect("/");
 });
 
-app.listen(port, ()=>{
+app.listen(process.env.PORT || port, ()=>{
     console.log(`Server is listening on ${port}`);
 })
 
