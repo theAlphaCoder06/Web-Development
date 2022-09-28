@@ -1,16 +1,27 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
+let newItems = ["Buy Food", "Cook Food", "Eat Food"];
 const port = 3000;
 const app = express();
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
+app.use(express.static("public"))
 // The below line of code tells the app which is build using express to view in ejs system
 app.set("view engine", "ejs");
 
 app.get("/", function (req, res) {
   let today = new Date();
   let currentDay = today.getDay();
-  let day = "";
 
+  const options = {
+    weekday: "long",
+    day: "numeric",
+    month: "long"
+  }
+
+  const day = today.toLocaleDateString("en-US", options);
   // if(today.getDay() === 6 || today.getDay === 0){
   //     day = "Weekend";
   // }
@@ -20,31 +31,41 @@ app.get("/", function (req, res) {
 
   switch (currentDay) {
     case 0:
-      day = "Sunday";
+      currentDay = "Sunday";
       break;
     case 1:
-      day = "Monday";
+      currentDay = "Monday";
       break;
     case 2:
-      day = "Tuesday";
+      currentDay = "Tuesday";
       break;
     case 3:
-      day = "Wednesday";
+      currentDay = "Wednesday";
       break;
     case 4:
-      day = "Thursday";
+      currentDay = "Thursday";
       break;
     case 5:
-      day = "Friday";
+      currentDay = "Friday";
       break;
     case 6:
-      day = "Saturday";
+      currentDay = "Saturday";
       break;
       default:
         console.log("Error: Current Day = " + currentDay);
   }
 
-  res.render("list", { day: day });
+  res.render("list", { day: day, newItems: newItems });
+});
+
+
+app.post("/", (req, res)=>{
+  let newItem = req.body.newItem; 
+  
+  newItems.push(newItem);
+
+  res.redirect("/")
+
 });
 
 app.listen(port, () => {
