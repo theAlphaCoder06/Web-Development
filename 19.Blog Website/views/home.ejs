@@ -17,10 +17,13 @@
 
 <%posts.forEach((post)=>{%>
     <h2>
-        <%=post.title;%>
+        <%=post.title%>
     </h2>
     <p>
-        <%=post.body;%>
+        <%=_.truncate(post.body, {'length': 200})%>
+        <%if(post.body.length >=200){%>
+            <a href="/posts/<%=post.title%>">Read More</a>
+        <%}%>
     </p>
 <%})%>
 
