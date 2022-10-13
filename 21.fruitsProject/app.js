@@ -1,96 +1,64 @@
-const { MongoClient } = require("mongodb");
+const mongoose = require('mongoose');
 
-const uri = "mongodb://127.0.0.1:27017";
+main().catch(err=>console.log(err));
 
-const client = new MongoClient(uri);
+async function main(){
 
-async function run() {
-  try {
-    const db = client.db('fruits');
-    console.log(`Connected to database ${db.databaseName}`);
+  await mongoose.connect("mongodb://127.0.0.1:27017/fruitsDB", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  });
 
-     const products = db.collection('products');
-    // const printName = products.find({name:'Apple'});
+  // ? Creating new schema
+  
+  const fruitSchema = new mongoose.Schema({
+    name: String,
+    rating: Number,
+    review: String
+  });
+  const Fruit = mongoose.model("Fruit", fruitSchema);//mongoose converts the 'Fruit" to 'fruits' to name our collection and this is done using _lodash
+  const fruit = new Fruit ({
+    name: "Apple",
+    rating: 7,
+    review: "Pretty solid"
+  });
 
-    // ? For Each functional Iteration
-    // await printName.forEach(products=>console.log(products));
+  const kiwi = new Fruit ({
+    name: "Kiwi",
+    rating: 10,
+    review: "The best"
+  })
+  const orange = new Fruit ({
+    name: "Orange",
+    rating: 9,
+    review: "OK OK!!"
+  })
+  const banana = new Fruit ({
+    name: "Banana",
+    rating: 8,
+    review: "Good"
+  })
+  // await kiwi.save();
+  // await orange.save();
+  // await banana.save();
 
-    // ? Return an array of all document
-    // ! For use case that require all documents matched by a query to be held in memory at the same time.
-    // const allValues = await printName.toArray();
-    // console.log(allValues);
+  Fruit.insertMany([kiwi, orange, banana], (err)=>{
+    if(err)
+      console.log(err);
+    else
+      console.log("Success")
+  })
 
-    // ? Asynchronous Iteration
-    // console.log("async");
-    // for await(const products of printName){
-    //   console.log(products);
-    // }
-
-    // ? Manual Iteration
-    // while(await products.hasNext){
-    //   console.log(await products.next())
-    // }
-
-    // ? Stream API
-    // printName.stream().on("data", products=>console.log(products))
-
-    // ? Event API
-    // printName.on("data", data=>console.log(data));
-
-    // ! Cursor utility Methods
-
-    // ? Count
-    // const count = await printName.estimatedDocumentCount;
-    // console.log(count);
-
-    // ? Rewind
-    // const firstResult = await printName.toArray();
-    // console.log("First count: " + firstResult.length);
-    // await printName.rewind();
-    // const secondResult = await printName.toArray();
-    // console.log("Second count: " + secondResult.length);
-
-    // ? Close
-    // await printName.close();
-
-    // ! Retrieve Distinct Values
-    // const distinctValues = products.distinct("name")
-
-    // await distinctValues.forEach(console.dir); //This give a warning
-    // await (await distinctValues).forEach(console.dir); // while this doesn't.
-
-    // ? Query Parameter
-    // const query = { _id: {$gt: 1}};
-    // const filteredContent = products.distinct("name", query);
-    // await (await filteredContent).forEach(console.dir);
-
-    // await distinctValues.close;
-
-    // ! Write Operations
-
-    // ? Insert single entry
-    // const doc = { _id : 6, name: 'Pineapple', review: 'Labourious'};
-    // const result = await products.insertOne(doc);
-    // console.log(`A document was inserted with the _id: ${result.insertedId}`)
-
-    // ? Insert many entries
-    // const docs = [
-    //   { _id: 8, name: 'Grapes', review: 'Best'},
-    //   { _id: 9, name: 'Watermelon', review: 'Hydration'},
-    //   { _id: 10, name: 'Strawberry', review: 'Good', color: 'Red'}
-    // ]
-    // const insertManyResult = await products.insertMany(docs);
-    // const ids = insertManyResult.insertedIds;
-    // console.log(`${insertManyResult.insertedCount} document were inserted`);
-    // for (const id of Object.values(ids)){
-    //   console.log(`Inserted a document with _id ${id}`);
-    // }
-
-
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
-  }
+  const peopleSchema = new mongoose.Schema({
+    name: String,
+    age: Number
+  })
+  const People = mongoose.model("People", peopleSchema);
+  const people = new People({
+    name: "Shubham",
+    age: 19
+  })
+  await people.save();
+  
+  //await fruit.save() // whenever we run this it will save the same apple to the database
 }
-run().catch(console.dir);
-
