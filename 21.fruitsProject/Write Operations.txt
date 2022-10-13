@@ -1,0 +1,19 @@
+# Write Operations
+
+    --> Insert single entry
+            const doc = { _id : 6, name: 'Pineapple', review: 'Laborious'};
+            const result = await products.insertOne(doc);
+            console.log(`A document was inserted with the _id: ${result.insertedId}`)
+
+    --> Insert many entries
+            const docs = [
+                { _id: 8, name: 'Grapes', review: 'Best'},
+                { _id: 9, name: 'Watermelon', review: 'Hydration'},
+                { _id: 10, name: 'Strawberry', review: 'Good', color: 'Red'}
+            ]
+            const insertManyResult = await products.insertMany(docs);
+            const ids = insertManyResult.insertedIds;
+            console.log(`${insertManyResult.insertedCount} document were inserted`);
+            for (const id of Object.values(ids)){
+                console.log(`Inserted a document with _id ${id}`);
+            }
