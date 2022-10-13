@@ -25,9 +25,26 @@ async function main(){
 
   const peopleSchema = new mongoose.Schema({
     name: String,
-    age: Number
+    age: Number,
+    favouritefruits: fruitSchema //this tells mongoose that we are embeeding a fruit document inside this property called favouriteFruit in our peoples document
   })
   const People = mongoose.model("People", peopleSchema);
 
-  mongoose.connection.close();
+
+  const mango = new Fruit({
+    name: "Mango",
+    rating: 10,
+    review: "Best!"
+  })
+
+  mango.save();
+
+  People.updateOne({_id: "6347b66c62c8e737d7e3c381"}, {favouritefruits: mango}, (err)=>{
+    if(err)
+      console.log(err)
+    else{console.log("Success")}
+  });
+
+  // people.save()
+
 }
