@@ -28,14 +28,9 @@ async function run() {
 }
 run().catch(console.dir);
 
-const userData = new mongoose.Schema({
-    data: String
-})
-
 const userSchema = new mongoose.Schema({
     email: String,
     password: String,
-    userdata: [userData]
 })
 const User = mongoose.model('User', userSchema);
 
