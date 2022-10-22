@@ -13,7 +13,7 @@ app.set('view engine', 'ejs');
 
 
 
-const uri = "mongodb+srv://<username>:<password>@cluster0.pw1yofw.mongodb.net/<dbName>?retryWrites=true&w=majority";
+const uri = "mongodb+srv://theAlphaCoder06:Database%4023071971@cluster0.pw1yofw.mongodb.net/users?retryWrites=true&w=majority";
 
 async function run() {
     try {
@@ -28,9 +28,14 @@ async function run() {
 }
 run().catch(console.dir);
 
+const userData = new mongoose.Schema({
+    data: String
+})
+
 const userSchema = new mongoose.Schema({
     email: String,
-    password: String
+    password: String,
+    userdata: [userData]
 })
 const User = mongoose.model('User', userSchema);
 
