@@ -17,21 +17,12 @@
 
 <%posts.forEach((post)=>{%>
     <h2>
-<<<<<<< HEAD
-        <%= _.capitalize(post.title);%>
-    </h2>
-    <p>
-        <%= _.truncate(post.body, {length: '100'});%>
-        <%if(post.body.length>=200){%>
-            <a href="/posts/<%=post.title%>">Read more</a>
-=======
-        <%=post.title%>
+        <%=_.capitalize(post.title)%>
     </h2>
     <p>
         <%=_.truncate(post.body, {'length': 200})%>
         <%if(post.body.length >=200){%>
             <a href="/posts/<%=post.title%>">Read More</a>
->>>>>>> 7e17fe25fe8e83e682a52d7a7b995eef56c1ca6c
         <%}%>
     </p>
 <%})%>
