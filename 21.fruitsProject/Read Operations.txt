@@ -1,0 +1,56 @@
+const products = db.collection('products');
+const printName = products.find({name:'Apple'});
+
+    --> For Each functional Iteration
+            await printName.forEach(products=>console.log(products));
+
+    --> Return an array of all document
+    --  For use case that require all documents matched by a query to be held in memory at the same time.
+            const allValues = await printName.toArray();
+            console.log(allValues);
+
+    --> Asynchronous Iteration
+            console.log("async");
+            for await(const products of printName){
+            console.log(products);
+            }
+
+    --> Manual Iteration
+            while(await products.hasNext){
+            console.log(await products.next())
+            }
+
+    --> Stream API
+            printName.stream().on("data", products=>console.log(products))
+
+    --> Event API
+            printName.on("data", data=>console.log(data));
+
+    --  Cursor utility Methods
+
+    --> Count
+            const count = await printName.estimatedDocumentCount;
+            console.log(count);
+
+    --> Rewind
+            const firstResult = await printName.toArray();
+            console.log("First count: " + firstResult.length);
+            await printName.rewind();
+            const secondResult = await printName.toArray();
+            console.log("Second count: " + secondResult.length);
+
+    --> Close
+            await printName.close();
+
+    --  Retrieve Distinct Values
+            const distinctValues = products.distinct("name")
+
+            await distinctValues.forEach(console.dir); //This give a warning
+            await (await distinctValues).forEach(console.dir); // while this doesn't.
+
+    --> Query Parameter
+            const query = { _id: {$gt: 1}};
+            const filteredContent = products.distinct("name", query);
+            await (await filteredContent).forEach(console.dir);
+
+            await distinctValues.close;

@@ -1,0 +1,33 @@
+const fruitSchema = new mongoose.Schema({
+    name: {
+      type: String,
+      required: [true, 'Why no name?']
+    },
+    rating: {
+      type: Number,
+      min: 1,
+      max: 10
+    },
+    review: String
+  });
+  const Fruit = mongoose.model("Fruit", fruitSchema);//mongoose converts the 'Fruit" to 'fruits' to name our collection and this is done using _lodash
+
+  const peopleSchema = new mongoose.Schema({
+    name: String,
+    age: Number
+  })
+  const People = mongoose.model("People", peopleSchema);
+
+
+  await Fruit.deleteOne({_id: "6347a8880bc5531339982314"})
+
+  await People.deleteMany({name:"Shubham"})
+
+  Fruit.updateOne({_id: "6347a8880bc5531339982316"}, {name: "Peach"},(err)=>{
+    if(err)
+      console.log(err);
+    else
+      console.log("Updated!")
+  });
+
+  mongoose.connection.close();
