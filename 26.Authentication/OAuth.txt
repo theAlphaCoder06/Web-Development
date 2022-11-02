@@ -1,0 +1,14 @@
+Granular Access Levels
+Read/Read+Write Access
+Revoke Access
+
+Steps involved in OAuth: 
+    Set up your app
+    Redirect to Authenticate
+    User Logs in
+    User Grants Permission
+    Receive Authorization Code
+    Exchange AuthCode for Access Token
+
+Analogy for access token and auth token
+    Auth code is kind of like a ticket but access token is like an ID card.
